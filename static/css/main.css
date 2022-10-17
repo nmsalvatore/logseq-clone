@@ -25,6 +25,7 @@ html {
 body {
     min-height: 100vh;
     min-height: -webkit-fill-available;
+    background: var(--background-main);
 }
 
 h1,h2,h3,h4,h5,h6,p {
@@ -149,13 +150,13 @@ main.main {
     filter: var(--icon-primary);
 }
 
-main.main .icon {
-    filter: var(--icon-tertiary);
+main.main .icon-group > img,
+main.main .icon-group > a {
     margin-left: 1rem;
 }
 
-main.main .icon:first-child {
-    margin-left: 0;
+main.main .icon {
+    filter: var(--icon-tertiary);
 }
 
 #favoriteButton.is_favorite {
@@ -170,14 +171,10 @@ main.main .icon:first-child {
     cursor: pointer;
 }
 
-button.button:has(.icon) {
+button.button[type='submit'] {
     margin-left: 1rem;
     background: none;
     border: 0;
-}
-
-main.main a:has(.icon) {
-    margin-left: 1rem;
 }
 
 .icon {
@@ -273,6 +270,7 @@ main.main a:has(.icon) {
     #entryForm input[name='title'],
     #entryForm textarea[name='body'] {
         width: 100%;
+        background: var(--background-main);
     }
 
 
