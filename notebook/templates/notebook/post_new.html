@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="icon-group">
+        <img class="icon button" src="{% static 'icons/heart.svg' %}" alt="Heart Icon">
+        <button type="submit" form="entryForm" class="button">
+            <img class="icon" src="{% static 'icons/save.svg' %}" alt="Save Icon">
+        </button>
+    </div>
+
+    <form class="form" id="entryForm" method="POST">
+        {% csrf_token %}
+
+        <div>{{ form.title }}</div>
+        <div class="grow-wrap">{{ form.body }}</div>
+    </form>
+
+{% endblock content %}

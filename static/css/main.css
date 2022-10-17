@@ -1,0 +1,330 @@
+:root {
+    --text-primary: #222;
+    --text-secondary: #444;
+    --text-tertiary: #888;
+    --text-placeholder: #aaa;
+    --icon-primary: invert(0%) sepia(4%) saturate(119%) hue-rotate(343deg) brightness(84%) contrast(73%);
+    --icon-secondary: invert(27%) sepia(3%) saturate(0%) hue-rotate(223deg) brightness(113%) contrast(84%);
+    --icon-tertiary: invert(63%) sepia(0%) saturate(0%) hue-rotate(212deg) brightness(85%) contrast(95%);
+    --background-main: #fefefe;
+    --background-sidebar: #f6f6f6;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    font-family: Helvetica, Arial, Helvetica, sans-serif;
+    height: -webkit-fill-available;
+}
+
+body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+}
+
+h1,h2,h3,h4,h5,h6,p {
+    margin-bottom: 1rem;
+}
+
+p {
+    line-height: 1.5;
+}
+
+body.container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+nav.navbar {
+    position: fixed;
+    width: 240px;
+    left: 0;
+    top: 0;
+    background: var(--background-sidebar);
+    height: 100%;
+    padding: 1rem;
+    z-index: 1;
+}
+
+    nav.navbar .icon-group {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 2rem;
+    }
+
+    nav.navbar .icon-group .icon {
+        filter: var(--icon-tertiary);
+        margin-right: 1rem;
+    }
+
+    nav.navbar .icon-group .icon:last-child {
+        margin-right: 0;
+    }
+
+    nav.navbar h5 {
+        font-size: 1rem;
+        font-variant: small-caps;
+        color: var(--text-tertiary);
+        margin-top: 1rem;
+    }
+
+    nav.navbar h5:first-child {
+        margin-top: 0;
+    }
+
+    nav.navbar ul {
+        list-style-type: none;
+        font-size: 1rem;
+        color: var(--text-secondary);
+    }
+
+    nav.navbar ul > li {
+        padding: 0.25rem 0;
+        margin: 0.5rem 0;
+    }
+
+    nav.navbar ul > li > a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+main.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--background-main);
+    height: 100%;
+    width: 100%;
+    padding: 1rem 2rem;
+    margin-left: 240px;
+}
+
+    main.main h1 {
+        color: var(--text-primary);
+        margin-bottom: 2rem;
+    }
+
+    main.main {
+        color: var(--text-secondary);
+    }
+
+    main.main .icon-group {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-bottom: 32px;
+        width: 100%;
+    }
+
+    main.main .entry {
+        width: 100%;
+    }
+
+    main.main .entries > .entry {
+        margin-bottom: 4rem;
+    }
+
+#newEntryButton {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: var(--background-sidebar);
+    width: 240px;
+    padding: 1rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    border-radius: 5px;
+}
+
+#newEntryButton > .icon {
+    margin-right: 1rem;
+    filter: var(--icon-primary);
+}
+
+main.main .icon {
+    filter: var(--icon-tertiary);
+    margin-left: 1rem;
+}
+
+main.main .icon:first-child {
+    margin-left: 0;
+}
+
+#favoriteButton.is_favorite {
+    filter: invert(47%) sepia(18%) saturate(1591%) hue-rotate(313deg) brightness(94%) contrast(92%);
+}
+
+#menuButton {
+    display: none;
+}
+
+.button {
+    cursor: pointer;
+}
+
+button.button:has(.icon) {
+    margin-left: 1rem;
+    background: none;
+    border: 0;
+}
+
+main.main a:has(.icon) {
+    margin-left: 1rem;
+}
+
+.icon {
+    height: 1.5rem;
+}
+
+@media only screen and (min-width: 1320px) {
+    main.main .entry,
+    main.main #entryForm {
+        width: 960px;
+    }
+}
+
+@media only screen and (max-width: 960px) {
+    nav.navbar {
+        width: auto;
+    }
+
+    nav.navbar .icon-group {
+        flex-direction: column;
+    }
+
+    nav.navbar .icon-group > .icon {
+        margin: 1rem 0;
+    }
+
+    nav.navbar .icon-group > .icon:first-child {
+        margin-top: 0;
+    }
+
+    nav.navbar .content {
+        display: none;
+    }
+
+    nav.navbar #menuButton {
+        display: block;
+    }
+
+    nav.navbar #newEntryButton {
+        width: 56px;
+    }
+
+    nav.navbar #newEntryButton .text {
+        display: none;
+    }
+
+    main.main {
+        margin-left: 56px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    nav.navbar {
+        position: fixed;
+        width: 100%;
+        left: 0;
+        top: 0;
+        background: var(--background-sidebar);
+        height: auto;
+        padding: 1rem;
+        z-index: 1;
+    }
+
+    nav.navbar .icon-group {
+        flex-direction: row;
+        margin-bottom: 0;
+    }
+
+    nav.navbar .icon-group > .icon {
+        margin: 0 1rem;
+    }
+
+    nav.navbar .icon-group > .icon:first-child {
+        margin-left: 0;
+    }
+
+    nav.navbar #newEntryButton {
+        right: 0;
+        left: auto;
+    }
+
+    main.main {
+        margin-top: 56px;
+        margin-left: 0;
+        padding: 2rem 1rem;
+    }
+}
+
+#entryForm {
+    width: 100%;
+}
+
+    #entryForm input[name='title'],
+    #entryForm textarea[name='body'] {
+        width: 100%;
+    }
+
+
+    #entryForm input[name='title']::placeholder,
+    #entryForm textarea[name='body']::placeholder {
+        color: var(--text-placeholder);
+    }
+
+    #entryForm input[name='title']:focus,
+    #entryForm textarea[name='body']:focus {
+        outline: none;
+    }
+
+    #entryForm input[name='title'] {
+        display: block;
+        font-size: 2em;
+        font-weight: bold;
+        border: none;
+        color: var(--text-primary);
+        font-family: inherit;
+        margin-bottom: 2rem;
+    }
+
+    #entryForm textarea[name='body'] {
+        color: var(--text-secondary);
+        font-family: inherit;
+        font-size: 1rem;
+        border: none;
+    }
+
+
+    /* autogrow textarea */
+
+.grow-wrap {
+    display: grid;
+    flex: 1;
+}
+
+    .grow-wrap::after {
+        content: attr(data-replicated-value) " ";
+        white-space: pre-wrap;
+        visibility: hidden;
+    }
+
+    .grow-wrap > textarea {
+        resize: none;
+        overflow: hidden;
+    }
+
+    .grow-wrap > textarea,
+    .grow-wrap::after {
+        font: inherit;
+        grid-area: 1 / 1 / 2 / 2;
+        line-height: 1.5;
+    }

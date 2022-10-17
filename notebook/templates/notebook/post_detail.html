@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load markdown_extras %}
+
+{% block content %}
+
+    <div class="icon-group">
+        {% if entry.favorite %}
+            <img class="icon button is_favorite" id="favoriteButton" src="{% static 'icons/heart_fill.svg' %}" alt="Heart Icon">
+        {% else %}
+            <img class="icon button" id="favoriteButton" src="{% static 'icons/heart.svg' %}" alt="Heart Icon">
+        {% endif %}
+        <a href="{% url 'edit-post' entry.id %}">
+            <img class="icon button" src="{% static 'icons/edit.svg' %}" alt="Edit Icon">
+        </a>
+        <a href="{% url 'delete-post' entry.id %}">
+            <img class="icon button" src="{% static 'icons/delete.svg' %}" alt="Delete Icon">
+        </a>
+    </div>
+
+    <div class="entry">
+        <h1>{{ entry.title }}</h1>
+        <div class="markdown-body">
+            <p>{{ entry.body | markdown | safe }}</p>
+        </div>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,15 @@
+/* :root {
+    --text-primary: #222;
+    --text-secondary: #444;
+    --text-tertiary: #888;
+    --text-placeholder: #aaa;
+    --icon-primary: invert(0%) sepia(4%) saturate(119%) hue-rotate(343deg) brightness(84%) contrast(73%);
+    --icon-secondary: invert(27%) sepia(3%) saturate(0%) hue-rotate(223deg) brightness(113%) contrast(84%);
+    --icon-tertiary: invert(63%) sepia(0%) saturate(0%) hue-rotate(212deg) brightness(85%) contrast(95%);
+    --background-main: #fefefe;
+    --background-sidebar: #f6f6f6;
+} */
+
+.hljs {
+    background: none !important;
+}

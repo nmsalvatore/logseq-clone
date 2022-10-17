@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="entries">
+        {% for entry in entries %}
+            <div class="entry">
+                <h1>{{ entry.title }}</h1>
+                <p>{{ entry.body }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock content %}

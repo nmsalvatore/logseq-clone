@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/markdown.css' %}">
+    <link rel="stylesheet" href="{% static 'css/hljs.css' %}">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+    <title>Aelius</title>
+</head>
+<body class="container">
+    <nav class="navbar">
+        <div class="icon-group">
+            <img class="icon button" id="menuButton" src="{% static 'icons/menu.svg' %}" alt="Menu Icon">
+            <img class="icon button" id="userButton" src="{% static 'icons/user.svg' %}" alt="UserIcon">
+            <img class="icon button" id="searchButton" src="{% static 'icons/search.svg' %}" alt="Search Icon">
+        </div>
+        <div class="content">
+            <h5>favorites</h5>
+            <ul>
+                {% for favorite in favorites %}
+                    <li class="favorite-title">
+                        <a href="{% url 'view-post' favorite.id %}">{{ favorite.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <h5>recent</h5>
+            <ul>
+                {% for entry in entries %}
+                    <li class="recent-title">
+                        <a href="{% url 'view-post' entry.id %}">{{ entry.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <a href="{% url 'new-post' %}" class="button" id="newEntryButton">
+            <img class="icon" src="{% static 'icons/add.svg' %}" alt="Add Icon">
+            <span class="text">New entry</span>
+        </a>
+    </nav>
+    <main class="main">
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
