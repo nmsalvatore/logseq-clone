@@ -77,3 +77,24 @@ const setTheme = theme => {
 }
 
 setTheme(nord)
+
+// styling
+const liElements = document.querySelectorAll('li');
+for (li of liElements) {
+  try {
+    if (li.firstElementChild.tagName == 'UL') {
+      li.style.listStyleType = 'none';
+    }
+  } catch {
+    continue
+  }
+}
+
+// scroll to the bottom of the page if selection cursor is at end of textarea field
+textarea = document.querySelector('.grow-wrap > textarea');
+textarea.addEventListener('keydown', () => {
+  if (textarea.selectionEnd == textarea.value.length) {
+    growWrap = document.querySelector('.grow-wrap');
+    window.scrollTo(0, growWrap.scrollHeight + 16);
+  }
+});
