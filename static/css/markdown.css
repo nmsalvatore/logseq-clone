@@ -31,10 +31,6 @@
         line-height: 1.5;
     }
 
-    .markdown-body li:has(ul) {
-        list-style-type: none;
-    }
-
     .markdown-body li > ul {
         margin-bottom: 0;
     }

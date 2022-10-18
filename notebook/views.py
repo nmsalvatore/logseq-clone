@@ -46,9 +46,15 @@ def edit_post(request, pk):
 
 
 def delete_post(request, pk):
+    context = get_base_context()
     entry = Entry.objects.get(id=pk)
-    entry.delete()
-    return redirect('home')
+
+    if request.method == 'POST':
+        entry.delete()
+        return redirect('home')
+
+    context['entry'] = entry
+    return render(request, 'notebook/post_delete.html', context)
 
 
 def get_base_context():

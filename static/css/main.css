@@ -36,6 +36,10 @@ p {
     line-height: 1.5;
 }
 
+a {
+    color: var(--text-tertiary);
+}
+
 body.container {
     display: flex;
     align-items: flex-start;
@@ -123,12 +127,24 @@ main.main {
         width: 100%;
     }
 
-    main.main .entry {
+    main.main .entry,
+    main.main .delete-container {
         width: 100%;
     }
 
     main.main .entries > .entry {
         margin-bottom: 4rem;
+    }
+
+    main.main .delete-container {
+        margin-top: 56px;
+        width: 100%;
+    }
+
+    main.main .delete-container input.button {
+        background: var(--text-secondary);
+        border-radius: 5px;
+        padding: 0.25rem 1rem;
     }
 
 #newEntryButton {
@@ -171,7 +187,8 @@ main.main .icon {
     cursor: pointer;
 }
 
-button.button[type='submit'] {
+button.button[type='submit'],
+input.button {
     margin-left: 1rem;
     background: none;
     border: 0;
@@ -183,7 +200,8 @@ button.button[type='submit'] {
 
 @media only screen and (min-width: 1320px) {
     main.main .entry,
-    main.main #entryForm {
+    main.main #entryForm,
+    main.main .delete-container {
         width: 960px;
     }
 }
@@ -325,4 +343,5 @@ button.button[type='submit'] {
         font: inherit;
         grid-area: 1 / 1 / 2 / 2;
         line-height: 1.5;
+        margin-bottom: 68px;
     }
