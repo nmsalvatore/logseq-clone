@@ -5,8 +5,15 @@ from notebook.models import Entry
 
 def home(request):
     context = get_base_context()
-    context['entry'] = Entry.objects.first()
-    return render(request, 'notebook/post_detail.html', context)
+
+    try:
+        entry = Entry.objects.first()
+        context['entry'] = entry
+        return render(request, 'notebook/post_detail.html', context)
+
+    except:
+        return redirect('new-post')
+        
 
 
 def view_post(request, pk):
