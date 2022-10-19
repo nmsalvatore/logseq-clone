@@ -1,17 +1,23 @@
-// autogrow textarea
+// constants
+const favoriteButton = document.getElementById('favoriteButton');
 const growers = document.querySelectorAll('.grow-wrap');
-growers.forEach((grower) => {
-  const textarea = grower.querySelector('textarea');
-  textarea.addEventListener('input', () => {
-    grower.dataset.replicatedValue = textarea.value;
+const textarea = document.querySelector('.grow-wrap > textarea')
+const saveButton = document.getElementById('saveButton');
+
+// autogrow textarea
+if (growers) {
+  growers.forEach((grower) => {
+    const textarea = grower.querySelector('textarea');
+    textarea.addEventListener('input', () => {
+      grower.dataset.replicatedValue = textarea.value;
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      grower.dataset.replicatedValue = textarea.value;
+    })
   });
-  document.addEventListener('DOMContentLoaded', () => {
-    grower.dataset.replicatedValue = textarea.value;
-  })
-});
+}
 
 // toggle favorite
-favoriteButton = document.getElementById('favoriteButton');
 if (favoriteButton) {
     favoriteButton.addEventListener('click', e => {
         if (favoriteButton.classList.contains('is_favorite')) {
@@ -30,7 +36,7 @@ if (favoriteButton) {
 hljs.highlightAll();
 
 // modify stylesheet
-light = `
+const light = `
   :root {
     --text-primary: #222;
     --text-secondary: #444;
@@ -43,7 +49,7 @@ light = `
     --background-sidebar: #f6f6f6;
 }`
 
-dark = `
+const dark = `
   :root {
     --background-main: #222;
     --background-sidebar: #444;
@@ -56,7 +62,7 @@ dark = `
     --icon-tertiary: invert(69%) sepia(0%) saturate(1%) hue-rotate(234deg) brightness(88%) contrast(91%);
   }`
 
-nord = `
+const nord = `
   :root {
     --background-main: #002b36;
     --background-sidebar: #023643;
@@ -78,7 +84,7 @@ const setTheme = theme => {
 
 setTheme(nord)
 
-// styling
+// remove list style type from li that has ul
 const liElements = document.querySelectorAll('li');
 for (li of liElements) {
   try {
@@ -91,10 +97,29 @@ for (li of liElements) {
 }
 
 // scroll to the bottom of the page if selection cursor is at end of textarea field
-textarea = document.querySelector('.grow-wrap > textarea');
-textarea.addEventListener('keydown', () => {
-  if (textarea.selectionEnd == textarea.value.length) {
-    growWrap = document.querySelector('.grow-wrap');
-    window.scrollTo(0, growWrap.scrollHeight + 16);
+if (textarea) {
+  textarea.addEventListener('keydown', () => {
+    if (textarea.selectionEnd == textarea.value.length) {
+      growWrap = document.querySelector('.grow-wrap');
+      window.scrollTo(0, growWrap.scrollHeight + 16);
+    }
+  });
+}
+
+// check for unsaved changes before leaving new/edit entry page
+if (textarea) {
+  savedContent = textarea.value
+}
+
+let saveButtonClicked = false
+if (saveButton) {
+  saveButton.addEventListener('click', () => {
+    saveButtonClicked = true
+  });
+}
+
+window.addEventListener('beforeunload', e => {
+  if (savedContent != textarea.value && !saveButtonClicked) {
+    e.returnValue = 'Changes you made may not be saved.'
   }
 });
