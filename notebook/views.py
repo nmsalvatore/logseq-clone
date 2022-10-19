@@ -4,16 +4,13 @@ from notebook.forms import EntryForm
 from notebook.models import Entry
 
 def home(request):
-    context = get_base_context()
-
     try:
+        context = get_base_context()
         entry = Entry.objects.first()
         context['entry'] = entry
         return render(request, 'notebook/post_detail.html', context)
-
     except:
         return redirect('new-post')
-        
 
 
 def view_post(request, pk):
@@ -69,3 +66,11 @@ def get_base_context():
         'favorites': Entry.objects.filter(favorite=True),
         'entries': Entry.objects.all(),    
     }
+
+def favorite_post(request, pk):
+    entry = Entry.objects.get(id=pk)
+    entry.favorite = not entry.favorite
+    entry.save()
+    return redirect('view-post', entry.id)
+
+    

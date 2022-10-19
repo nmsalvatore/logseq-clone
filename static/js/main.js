@@ -23,11 +23,9 @@ if (favoriteButton) {
         if (favoriteButton.classList.contains('is_favorite')) {
             favoriteButton.classList.remove('is_favorite');
             favoriteButton.src = '/static/icons/heart.svg';
-            favoriteForm.submit();
         } else {
             favoriteButton.classList.add('is_favorite');
             favoriteButton.src = '/static/icons/heart_fill.svg';
-            favoriteForm.submit();
         }
     });
 }
