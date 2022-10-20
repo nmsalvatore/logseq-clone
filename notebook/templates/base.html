@@ -14,11 +14,11 @@
     <title>Notebook</title>
 </head>
 <body class="container">
+    {% if user.is_authenticated %}
     <nav class="navbar">
         <div class="icon-group">
-            <img class="icon button" id="menuButton" src="{% static 'icons/menu.svg' %}" alt="Menu Icon">
-            <img class="icon button" id="userButton" src="{% static 'icons/user.svg' %}" alt="UserIcon">
             <img class="icon button" id="searchButton" src="{% static 'icons/search.svg' %}" alt="Search Icon">
+            <img class="icon button" id="menuButton" src="{% static 'icons/menu.svg' %}" alt="Menu Icon">
         </div>
         <div class="content">
             <h5>favorites</h5>
@@ -49,5 +49,6 @@
     </main>
 
     <script src="{% static 'js/main.js' %}"></script>
+    {% endif %}
 </body>
 </html>
