@@ -163,13 +163,13 @@ main.main {
     width: 240px;
     padding: 1rem;
     text-decoration: none;
-    color: var(--text-primary);
+    color: var(--text-secondary);
     border-radius: 5px;
 }
 
 #newEntryButton > .icon {
     margin-right: 1rem;
-    filter: var(--icon-primary);
+    filter: var(--icon-secondary);
 }
 
 main.main .icon-container {
