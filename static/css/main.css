@@ -60,6 +60,7 @@ nav.navbar {
     nav.navbar .icon-group {
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
         margin-bottom: 2rem;
     }
 
@@ -112,7 +113,9 @@ main.main {
 
     main.main h1 {
         color: var(--text-primary);
+        margin-top: 1rem;
         margin-bottom: 2rem;
+        line-height: 0.9;
     }
 
     main.main {
@@ -123,7 +126,6 @@ main.main {
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
-        margin-bottom: 32px;
         width: 100%;
     }
 
@@ -170,9 +172,19 @@ main.main {
     filter: var(--icon-primary);
 }
 
+main.main .icon-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
 main.main .icon-group > img,
 main.main .icon-group > a {
     margin-left: 1rem;
+}
+
+main.main .icon-container {
+    margin-bottom: 46px;
 }
 
 main.main .icon {
@@ -182,10 +194,6 @@ main.main .icon {
 #favoriteButton.is_favorite,
 #formFavoriteButton.is_favorite {
     filter: invert(47%) sepia(18%) saturate(1591%) hue-rotate(313deg) brightness(94%) contrast(92%);
-}
-
-#menuButton {
-    display: none;
 }
 
 .button {
@@ -217,23 +225,19 @@ input.button {
     }
 
     nav.navbar .icon-group {
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 
     nav.navbar .icon-group > .icon {
         margin: 1rem 0;
     }
 
-    nav.navbar .icon-group > .icon:first-child {
+    nav.navbar .icon-group > .icon:last-child {
         margin-top: 0;
     }
 
     nav.navbar .content {
         display: none;
-    }
-
-    nav.navbar #menuButton {
-        display: block;
     }
 
     nav.navbar #newEntryButton {
@@ -262,7 +266,8 @@ input.button {
     }
 
     nav.navbar .icon-group {
-        flex-direction: row;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
         margin-bottom: 0;
     }
 
@@ -270,7 +275,7 @@ input.button {
         margin: 0 1rem;
     }
 
-    nav.navbar .icon-group > .icon:first-child {
+    nav.navbar .icon-group > .icon:last-child {
         margin-left: 0;
     }
 
@@ -282,7 +287,11 @@ input.button {
     main.main {
         margin-top: 56px;
         margin-left: 0;
-        padding: 2rem 1rem;
+        padding: 1rem;
+    }
+
+    main.main .icon-container {
+        margin-bottom: 2rem;
     }
 }
 
@@ -314,7 +323,8 @@ input.button {
         border: none;
         color: var(--text-primary);
         font-family: inherit;
-        margin-bottom: 2rem;
+        margin-top: 0.8rem;
+        margin-bottom: 1.75rem;
     }
 
     #entryForm textarea[name='body'] {
@@ -350,3 +360,11 @@ input.button {
         line-height: 1.5;
         margin-bottom: 68px;
     }
+
+body.registration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--background-main);
+}
+
