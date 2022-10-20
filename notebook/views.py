@@ -79,5 +79,5 @@ def favorite_post(request, pk):
 def get_base_context(request):
     return {
         'favorites': Entry.objects.filter(favorite=True, user=request.user),
-        'entries': Entry.objects.filter(user=request.user),
+        'entries': Entry.objects.filter(favorite=False, user=request.user),
     }
