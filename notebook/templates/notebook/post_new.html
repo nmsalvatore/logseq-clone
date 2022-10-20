@@ -4,7 +4,11 @@
 {% block content %}
 
     <div class="icon-group">
-        <img class="icon button" src="{% static 'icons/heart.svg' %}" alt="Heart Icon">
+        {% if entry.favorite %}
+            <img class="icon button is_favorite" id="formFavoriteButton" src="{% static 'icons/heart_fill.svg' %}" alt="Red Heart Icon">
+        {% else %}
+            <img class="icon button" id="formFavoriteButton" src="{% static 'icons/heart.svg' %}" alt="Heart Outline Icon">
+        {% endif %}
         <button id="saveButton" type="submit" form="entryForm" class="button">
             <img class="icon" src="{% static 'icons/save.svg' %}" alt="Save Icon">
         </button>
@@ -15,6 +19,7 @@
 
         <div>{{ form.title }}</div>
         <div class="grow-wrap">{{ form.body }}</div>
+        <div id="favoriteInput">{{ form.favorite }}</div>
     </form>
 
 {% endblock content %}

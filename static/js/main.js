@@ -1,5 +1,6 @@
 // constants
 const favoriteButton = document.getElementById('favoriteButton');
+const formFavoriteButton = document.getElementById('formFavoriteButton');
 const growers = document.querySelectorAll('.grow-wrap');
 const textarea = document.querySelector('.grow-wrap > textarea')
 const saveButton = document.getElementById('saveButton');
@@ -20,13 +21,28 @@ if (growers) {
 // toggle favorite
 if (favoriteButton) {
     favoriteButton.addEventListener('click', e => {
-        if (favoriteButton.classList.contains('is_favorite')) {
-            favoriteButton.classList.remove('is_favorite');
-            favoriteButton.src = '/static/icons/heart.svg';
-        } else {
-            favoriteButton.classList.add('is_favorite');
-            favoriteButton.src = '/static/icons/heart_fill.svg';
-        }
+      if (favoriteButton.classList.contains('is_favorite')) {
+          favoriteButton.classList.remove('is_favorite');
+          favoriteButton.src = '/static/icons/heart.svg';
+      } else {
+          favoriteButton.classList.add('is_favorite');
+          favoriteButton.src = '/static/icons/heart_fill.svg';
+      }
+    });
+}
+
+if (formFavoriteButton) {
+    formFavoriteButton.addEventListener('click', e=> {
+      if (formFavoriteButton.classList.contains('is_favorite')) {
+        formFavoriteButton.classList.remove('is_favorite');
+        formFavoriteButton.src = '/static/icons/heart.svg';
+        favoriteInput.querySelector('select').value = 'false';
+        form
+      } else {
+        formFavoriteButton.classList.add('is_favorite');
+        formFavoriteButton.src = '/static/icons/heart_fill.svg';
+        favoriteInput.querySelector('select').value = 'true';
+      }
     });
 }
 

@@ -147,6 +147,10 @@ main.main {
         padding: 0.25rem 1rem;
     }
 
+    main.main #favoriteInput {
+        display: none;
+    }
+
 #newEntryButton {
     display: flex;
     align-items: center;
@@ -175,7 +179,8 @@ main.main .icon {
     filter: var(--icon-tertiary);
 }
 
-#favoriteButton.is_favorite {
+#favoriteButton.is_favorite,
+#formFavoriteButton.is_favorite {
     filter: invert(47%) sepia(18%) saturate(1591%) hue-rotate(313deg) brightness(94%) contrast(92%);
 }
 

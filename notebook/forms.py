@@ -5,7 +5,7 @@ from .models import Entry
 class EntryForm(ModelForm):
     class Meta:
         model = Entry
-        fields = ['title','body']
+        fields = ['title','body', 'favorite']
         widgets = {
             'title': forms.TextInput(attrs={
                 'placeholder': 'New entry', 
@@ -16,5 +16,4 @@ class EntryForm(ModelForm):
                 'placeholder': "What's on your mind?",
                 'autocomplete': 'off'
             }),
-            
         }
