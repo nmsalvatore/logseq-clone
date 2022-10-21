@@ -4,7 +4,7 @@ from datetime import timedelta
 import uuid
 
 class Entry(models.Model):
-    uuid = models.UUIDField(default=uuid.uuid4, editable=True)
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=120, null=True)
     body = models.TextField()
