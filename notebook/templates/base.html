@@ -25,7 +25,7 @@
             <ul>
                 {% for favorite in favorites %}
                     <li class="favorite-title">
-                        <a href="{% url 'view-post' favorite.id %}">{{ favorite.title }}</a>
+                        <a href="{% url 'view-post' favorite.uuid %}">{{ favorite.title }}</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -33,7 +33,7 @@
             <ul>
                 {% for entry in entries %}
                     <li class="recent-title">
-                        <a href="{% url 'view-post' entry.id %}">{{ entry.title }}</a>
+                        <a href="{% url 'view-post' entry.uuid %}">{{ entry.title }}</a>
                     </li>
                 {% endfor %}
             </ul>

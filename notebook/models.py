@@ -1,8 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import timedelta
+import uuid
 
 class Entry(models.Model):
+    uuid = models.UUIDField(default=uuid.uuid4, editable=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=120, null=True)
     body = models.TextField()

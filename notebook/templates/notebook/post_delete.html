@@ -7,7 +7,7 @@
         <p>Are you sure that you want to delete "{{ entry.title }}"?</p>
         <form method="POST">
             {% csrf_token %}
-            <a href="{% url 'view-post' entry.id %}">Back</a>
+            <a href="{% url 'view-post' entry.uuid %}">Back</a>
             <input class="button" type="submit" value="Delete">
         </form>
     </div>
