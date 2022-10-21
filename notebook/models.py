@@ -9,6 +9,7 @@ class Entry(models.Model):
     favorite = models.BooleanField(default=False, null=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     date_updated = models.DateTimeField(auto_now=True, null=True)
+    recently_viewed = models.DateTimeField(auto_now=True, null=True)
 
     @property
     def is_updated(self):
@@ -23,4 +24,4 @@ class Entry(models.Model):
         super().save_model(request, obj, form, change)
 
     class Meta:
-        ordering = ['-date_updated']
+        ordering = ['-recently_viewed']

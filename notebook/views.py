@@ -4,6 +4,8 @@ from django.shortcuts import render, redirect
 from notebook.forms import EntryForm
 from notebook.models import Entry
 
+import itertools
+
 
 @login_required(login_url='/accounts/login/')
 def home(request):
@@ -20,6 +22,7 @@ def home(request):
 def view_post(request, pk):
     context = get_base_context(request)
     entry = Entry.objects.get(id=pk, user=request.user)
+    entry.save()
     context['entry'] = entry
     return render(request, 'notebook/post_detail.html', context)
 
@@ -77,7 +80,9 @@ def favorite_post(request, pk):
 
 
 def get_base_context(request):
+    favorites = Entry.objects.filter(favorite=True, user=request.user).order_by('title')
+    recently_viewed = Entry.objects.filter(favorite=False, user=request.user)
     return {
-        'favorites': Entry.objects.filter(favorite=True, user=request.user),
-        'entries': Entry.objects.filter(favorite=False, user=request.user),
+        'favorites': favorites,
+        'entries': recently_viewed,
     }
