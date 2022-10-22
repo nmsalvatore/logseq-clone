@@ -175,7 +175,7 @@ main.main {
     position: absolute;
     padding: 0.25rem 1rem;
     border-radius: 5px;
-    color: var(--text-secondary);
+    color: var(--text-primary);
     bottom: 0;
     left: 0;
     background: var(--background-sidebar);
