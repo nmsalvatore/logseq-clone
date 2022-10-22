@@ -41,12 +41,13 @@ body.registration form label {
 
 body.registration form input {
     margin: 0.25rem 0;
-    padding: 0.5rem;
+    padding: 0.75rem;
     background: transparent;
     color: var(--text-secondary);
     border: 1px solid var(--text-placeholder);
     border-radius: 5px;
-    width: 240px;
+    width: 280px;
+    font-size: 1rem;
 }
 
 body.registration form input:focus {
@@ -55,15 +56,34 @@ body.registration form input:focus {
 
 body.registration form button {
     margin: 0.25rem 0;
-    padding: 0.5rem;
-    width: 240px;
+    padding: 0.75rem;
+    width: 280px;
     background: var(--text-placeholder);
     color: var(--text-secondary);
     border: none;
     border-radius: 5px;
+    font-size: 1rem;
 }
 
 body.registration .helptext,
 body.registration ul {
     display: none;
+}
+
+body.registration .other-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+body.registration .other-options a {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 14px;
+}
+
+body.registration .other-options a:last-child {
+    margin-bottom: 0;
 }

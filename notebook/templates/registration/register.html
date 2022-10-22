@@ -14,6 +14,9 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Register</button>
+        <div class="other-options">
+            <a href="{% url 'login' %}">Log In</a>
+        </div>
     </form>
     <script src="{% static 'js/registration.js' %}"></script>
 </body>
