@@ -17,10 +17,13 @@
     {% if user.is_authenticated %}
     <nav class="navbar">
         <div class="icon-group">
-            <img class="icon button" id="searchButton" src="{% static 'icons/search.svg' %}" alt="Search Icon">
             <img class="icon button" id="menuButton" src="{% static 'icons/menu.svg' %}" alt="Menu Icon">
+            <a href="{% url 'new-post' %}" class="button" id="newEntryButton">
+                <img class="icon" src="{% static 'icons/add.svg' %}" alt="Add Icon">
+                <span class="text">New entry</span>
+            </a>
         </div>
-        <div class="content">
+        <div class="content hide-mobile-content">
             <h5>favorites</h5>
             <ul>
                 {% for favorite in favorites %}
@@ -38,10 +41,7 @@
                 {% endfor %}
             </ul>
         </div>
-        <a href="{% url 'new-post' %}" class="button" id="newEntryButton">
-            <img class="icon" src="{% static 'icons/add.svg' %}" alt="Add Icon">
-            <span class="text">New entry</span>
-        </a>
+        <a id="logoutButton" href="{% url 'logout' %}">Log Out</a>
     </nav>
     <main class="main">
         {% block content %}

@@ -1,13 +1,14 @@
 :root {
-    --text-primary: #222;
-    --text-secondary: #444;
-    --text-tertiary: #888;
-    --text-placeholder: #aaa;
-    --icon-primary: invert(0%) sepia(4%) saturate(119%) hue-rotate(343deg) brightness(84%) contrast(73%);
-    --icon-secondary: invert(27%) sepia(3%) saturate(0%) hue-rotate(223deg) brightness(113%) contrast(84%);
-    --icon-tertiary: invert(63%) sepia(0%) saturate(0%) hue-rotate(212deg) brightness(85%) contrast(95%);
-    --background-main: #fefefe;
-    --background-sidebar: #f6f6f6;
+    --background-main: #002b36;
+    --background-sidebar: #023643;
+    --text-primary: #93a1a1;
+    --text-secondary: #dfdfdf;
+    --text-tertiary: #a4b5b6;;
+    --text-placeholder: #32555e;
+    --icon-primary: invert(91%) sepia(5%) saturate(574%) hue-rotate(134deg) brightness(78%) contrast(90%);
+    --icon-secondary: invert(100%) sepia(0%) saturate(6825%) hue-rotate(55deg) brightness(121%) contrast(75%);
+    --icon-tertiary: var(--icon-primary);
+    --button: #1b4a55;
 }
 
 * {
@@ -105,9 +106,10 @@ main.main {
     flex-direction: column;
     align-items: center;
     background: var(--background-main);
+    color: var(--text-secondary);
     height: 100%;
     width: 100%;
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
     margin-left: 240px;
 }
 
@@ -116,10 +118,6 @@ main.main {
         margin-top: 1rem;
         margin-bottom: 2rem;
         line-height: 0.9;
-    }
-
-    main.main {
-        color: var(--text-secondary);
     }
 
     main.main .icon-group {
@@ -156,20 +154,33 @@ main.main {
 #newEntryButton {
     display: flex;
     align-items: center;
+    text-decoration: none;
+    color: var(--text-secondary);
+    border-radius: 5px;
+    padding: 0.5rem;
+    width: 100%;
+    background: var(--button);
+}
+
+#newEntryButton > .icon {
+    filter: var(--icon-secondary);
+    margin-right: 1rem;
+}
+
+#menuButton {
+    display: none;
+}
+
+#logoutButton {
     position: absolute;
+    padding: 0.25rem 1rem;
+    border-radius: 5px;
+    color: var(--text-secondary);
     bottom: 0;
     left: 0;
     background: var(--background-sidebar);
     width: 240px;
     padding: 1rem;
-    text-decoration: none;
-    color: var(--text-secondary);
-    border-radius: 5px;
-}
-
-#newEntryButton > .icon {
-    margin-right: 1rem;
-    filter: var(--icon-secondary);
 }
 
 main.main .icon-container {
@@ -220,40 +231,12 @@ input.button {
 }
 
 @media only screen and (max-width: 960px) {
-    nav.navbar {
-        width: auto;
-    }
-
-    nav.navbar .icon-group {
-        flex-direction: column-reverse;
-    }
-
-    nav.navbar .icon-group > .icon {
-        margin: 1rem 0;
-    }
-
-    nav.navbar .icon-group > .icon:last-child {
-        margin-top: 0;
-    }
-
-    nav.navbar .content {
-        display: none;
-    }
-
-    nav.navbar #newEntryButton {
-        width: 56px;
-    }
-
-    nav.navbar #newEntryButton .text {
-        display: none;
-    }
-
     main.main {
-        margin-left: 56px;
+        width: 100%;
     }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 840px) {
     nav.navbar {
         position: fixed;
         width: 100%;
@@ -266,8 +249,8 @@ input.button {
     }
 
     nav.navbar .icon-group {
-        flex-direction: row-reverse;
-        justify-content: flex-end;
+        flex-direction: row;
+        justify-content: flex-start;
         margin-bottom: 0;
     }
 
@@ -275,19 +258,54 @@ input.button {
         margin: 0 1rem;
     }
 
-    nav.navbar .icon-group > .icon:last-child {
+    nav.navbar .icon-group > .icon:first-child {
         margin-left: 0;
     }
 
+    nav.navbar .hide-mobile-content {
+        display: none;
+    }
+
+    nav.navbar .content {
+        margin-top: 2rem;
+    }
+
+    nav.navbar #menuButton {
+        display: block;
+    }
+
     nav.navbar #newEntryButton {
+        display: flex;
+        align-items: center;
+        color: var(--text-secondary);
+        border-radius: 0;
+        padding: 0;
+        width: fit-content;
+        background: transparent;
+    }
+
+    nav.navbar #logoutButton {
         right: 0;
         left: auto;
+        top: 0;
+        width: auto;
+        height: 56px;
+        padding: 0 1rem;
+        line-height: 56px;
+    }
+
+    nav.navbar #newEntryButton .text {
+        display: none;
+    }
+
+    nav.navbar #newEntryButton .icon {
+        margin: 0;
     }
 
     main.main {
         margin-top: 56px;
         margin-left: 0;
-        padding: 1rem;
+        padding: 1.5rem 1rem;
     }
 
     main.main .icon-container {
