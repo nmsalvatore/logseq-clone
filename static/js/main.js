@@ -6,6 +6,7 @@ const textarea = document.querySelector('.grow-wrap > textarea')
 const saveButton = document.getElementById('saveButton');
 const menuButton = document.getElementById('menuButton');
 
+
 // autogrow textarea
 if (growers) {
   growers.forEach((grower) => {
@@ -47,8 +48,10 @@ if (formFavoriteButton) {
     });
 }
 
+
 // highlight js
 hljs.highlightAll();
+
 
 // remove list style type from li that has ul
 const liElements = document.querySelectorAll('li');
@@ -62,6 +65,7 @@ for (li of liElements) {
   }
 }
 
+
 // scroll to the bottom of the page if selection cursor is at end of textarea field
 if (textarea) {
   textarea.addEventListener('keydown', () => {
@@ -71,6 +75,7 @@ if (textarea) {
     }
   });
 }
+
 
 // check for unsaved changes before leaving new/edit entry page
 if (textarea) {
@@ -89,6 +94,9 @@ window.addEventListener('beforeunload', e => {
     e.returnValue = 'Changes you made may not be saved.'
   }
 });
+
+
+// toggle menu in mobile view
 
 if (menuButton) {
   menuButton.addEventListener('click', () => {

@@ -18,9 +18,11 @@
     <nav class="navbar">
         <div class="icon-group">
             <img class="icon button" id="menuButton" src="{% static 'icons/menu.svg' %}" alt="Menu Icon">
-            <a href="{% url 'new-post' %}" class="button" id="newEntryButton">
+            <a href="{% url 'new-post' %}" id="newEntryButton">
                 <img class="icon" src="{% static 'icons/add.svg' %}" alt="Add Icon">
-                <span class="text">New entry</span>
+            </a>
+            <a id="logoutButton" href="{% url 'logout' %}">
+                <img src="{% static 'icons/logout.svg' %}" alt="User Icon" class="icon">
             </a>
         </div>
         <div class="content hide-mobile-content">
@@ -47,7 +49,6 @@
                 </button>
             </form>
         </div>
-        <a id="logoutButton" href="{% url 'logout' %}">Log Out</a>
     </nav>
     <main class="main">
         {% block content %}

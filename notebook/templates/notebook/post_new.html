@@ -16,7 +16,6 @@
 
     <form class="form" id="entryForm" method="POST">
         {% csrf_token %}
-
         <div>{{ form.title }}</div>
         <div class="grow-wrap">{{ form.body }}</div>
         <div id="favoriteInput">{{ form.favorite }}</div>

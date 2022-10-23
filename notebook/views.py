@@ -10,7 +10,7 @@ from notebook.models import Entry
 def home(request):
     try:
         context = get_base_context(request)
-        entry = Entry.objects.filter(user=request.user).first()
+        entry = Entry.objects.filter(user=request.user).order_by('-recently_viewed').first()
         context['entry'] = entry
         return render(request, 'notebook/post_detail.html', context)
     except:
@@ -20,7 +20,7 @@ def home(request):
 @login_required(login_url='/accounts/login/')
 def view_post(request, uuid):
     context = get_base_context(request)
-    pk = get_id_from_uuid(uuid)
+    pk = get_id_from_uuid(request, uuid)
     entry = Entry.objects.get(id=pk, user=request.user)
     entry.save()
     context['entry'] = entry
@@ -45,8 +45,8 @@ def new_post(request):
 @login_required(login_url='/accounts/login/')
 def edit_post(request, uuid):
     context = get_base_context(request)
-    pk = get_id_from_uuid(uuid)
-    entry = Entry.objects.get(id=pk)
+    pk = get_id_from_uuid(request, uuid)
+    entry = Entry.objects.get(id=pk, user=request.user)
     form = EntryForm(instance=entry)
 
     if request.method == 'POST':
@@ -62,8 +62,8 @@ def edit_post(request, uuid):
 @login_required(login_url='/accounts/login/')
 def delete_post(request, uuid):
     context = get_base_context(request)
-    pk = get_id_from_uuid(uuid)
-    entry = Entry.objects.get(id=pk)
+    pk = get_id_from_uuid(request, uuid)
+    entry = Entry.objects.get(id=pk, user=request.user)
 
     if request.method == 'POST':
         entry.delete()
@@ -75,8 +75,8 @@ def delete_post(request, uuid):
 
 @login_required(login_url='/accounts/login/')
 def favorite_post(request, uuid):
-    pk = get_id_from_uuid(uuid)
-    entry = Entry.objects.get(id=pk)
+    pk = get_id_from_uuid(request, uuid)
+    entry = Entry.objects.get(id=pk, user=request.user)
     entry.favorite = not entry.favorite
     entry.save()
     return redirect('view-post', entry.uuid)
@@ -103,6 +103,6 @@ def get_base_context(request):
     }
 
 
-def get_id_from_uuid(uuid):
-    entry = Entry.objects.get(uuid=uuid)
+def get_id_from_uuid(request, uuid):
+    entry = Entry.objects.get(uuid=uuid, user=request.user)
     return entry.id
