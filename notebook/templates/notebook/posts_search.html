@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load markdown_extras %}
+
+{% block content %}
+
+    <p class="search-notification">Search results for "{{ search_text }}"</p>
+    <div class="entries">
+        {% for entry in entries %}
+            <div class="entry">
+                <a class="heading" href="{% url 'view-post' entry.uuid %}">
+                    <h1>{{ entry.title }}</h1>
+                </a>
+                <div class="markdown-body">
+                    <p>{{ entry.body | markdown | safe }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock content %}

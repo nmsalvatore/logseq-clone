@@ -26,20 +26,26 @@
         <div class="content hide-mobile-content">
             <h5>favorites</h5>
             <ul>
-                {% for favorite in favorites %}
+                {% for entry in favorites %}
                     <li class="favorite-title">
-                        <a href="{% url 'view-post' favorite.uuid %}">{{ favorite.title }}</a>
+                        <a href="{% url 'view-post' entry.uuid %}">{{ entry.title }}</a>
                     </li>
                 {% endfor %}
             </ul>
             <h5>recently viewed</h5>
             <ul>
-                {% for entry in entries %}
+                {% for entry in recently_viewed %}
                     <li class="recent-title">
                         <a href="{% url 'view-post' entry.uuid %}">{{ entry.title }}</a>
                     </li>
                 {% endfor %}
             </ul>
+            <form id="searchForm"  action="{% url 'search-posts' %}" method="GET">
+                <input id="searchInput" name="q" type="text">
+                <button class="button" type="submit">
+                    <img class="icon" src="{% static 'icons/search.svg' %}" alt="Search Icon">
+                </button>
+            </form>
         </div>
         <a id="logoutButton" href="{% url 'logout' %}">Log Out</a>
     </nav>

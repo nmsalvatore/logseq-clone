@@ -26,4 +26,4 @@ class Entry(models.Model):
         super().save_model(request, obj, form, change)
 
     class Meta:
-        ordering = ['-recently_viewed']
+        ordering = ['-date_created']

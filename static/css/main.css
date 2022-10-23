@@ -115,7 +115,7 @@ main.main {
 
     main.main h1 {
         color: var(--text-primary);
-        margin-top: 1rem;
+        margin-top: 1.5rem;
         margin-bottom: 2rem;
         line-height: 0.9;
     }
@@ -128,6 +128,7 @@ main.main {
     }
 
     main.main .entry,
+    main.main .entries,
     main.main .delete-container {
         width: 100%;
     }
@@ -157,14 +158,18 @@ main.main {
     text-decoration: none;
     color: var(--text-secondary);
     border-radius: 5px;
-    padding: 0.5rem;
+    border: 1px solid var(--text-placeholder);
     width: 100%;
-    background: var(--button);
+    padding: 0.5rem;
 }
 
 #newEntryButton > .icon {
     filter: var(--icon-secondary);
     margin-right: 1rem;
+}
+
+#newEntryButton .text {
+    display: no;
 }
 
 #menuButton {
@@ -183,6 +188,29 @@ main.main {
     padding: 1rem;
 }
 
+#searchForm {
+    display: flex;
+    align-items: center;
+    border-radius: 0px;
+    border-bottom: 1px solid var(--text-placeholder);
+    height: 40px;
+    margin-top: 2rem;
+    padding: 0.5rem;
+}
+
+#searchForm input {
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    width: 100%;
+    height: fit-content;
+    font-size: 1rem;
+}
+
+#searchForm input:focus {
+    outline: none;
+}
+
 main.main .icon-container {
     display: flex;
     justify-content: space-between;
@@ -198,7 +226,7 @@ main.main .icon-container {
     margin-bottom: 46px;
 }
 
-main.main .icon {
+.icon {
     filter: var(--icon-tertiary);
 }
 
@@ -222,8 +250,18 @@ input.button {
     height: 1.5rem;
 }
 
+a.heading {
+    text-decoration: none;
+}
+
+.search-notification {
+    width: 100%;
+    margin-bottom: 3.1rem;
+}
+
 @media only screen and (min-width: 1320px) {
     main.main .entry,
+    main.main .entries,
     main.main #entryForm,
     main.main .delete-container {
         width: 960px;
@@ -282,6 +320,7 @@ input.button {
         padding: 0;
         width: fit-content;
         background: transparent;
+        border: none;
     }
 
     nav.navbar #logoutButton {

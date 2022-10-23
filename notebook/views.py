@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.db.models import Q
 
 from notebook.forms import EntryForm
 from notebook.models import Entry
@@ -81,12 +82,24 @@ def favorite_post(request, uuid):
     return redirect('view-post', entry.uuid)
 
 
+@login_required(login_url='/accounts/login')
+def search_posts(request):
+    context = get_base_context(request)
+    search_text = request.GET.get('q')
+    search_results = Entry.objects.filter(
+        Q(title__icontains=search_text) | Q(body__icontains=search_text)
+    )
+    context['search_text'] = search_text
+    context['entries'] = search_results
+    return render(request, 'notebook/posts_search.html', context)
+
+
 def get_base_context(request):
     favorites = Entry.objects.filter(favorite=True, user=request.user).order_by('title')
-    recently_viewed = Entry.objects.filter(favorite=False, user=request.user)
+    recently_viewed = Entry.objects.filter(favorite=False, user=request.user).order_by('-recently_viewed')
     return {
         'favorites': favorites,
-        'entries': recently_viewed,
+        'recently_viewed': recently_viewed[:5],
     }
 
 
