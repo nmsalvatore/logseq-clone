@@ -78,11 +78,7 @@ nav.navbar {
         font-size: 1rem;
         font-variant: small-caps;
         color: var(--text-tertiary);
-        margin-top: 1rem;
-    }
-
-    nav.navbar h5:first-child {
-        margin-top: 0;
+        margin-top: 2rem;
     }
 
     nav.navbar ul {
@@ -109,7 +105,7 @@ main.main {
     color: var(--text-secondary);
     height: 100%;
     width: 100%;
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem;
     margin-left: 240px;
 }
 
@@ -158,9 +154,7 @@ main.main {
     text-decoration: none;
     color: var(--text-secondary);
     border-radius: 5px;
-    border: 1px solid var(--text-placeholder);
     width: 100%;
-    padding: 0.5rem;
 }
 
 #newEntryButton > .icon {
@@ -169,7 +163,7 @@ main.main {
 }
 
 #newEntryButton .text {
-    display: no;
+    display: none;
 }
 
 #menuButton {
@@ -186,29 +180,6 @@ main.main {
     background: var(--background-sidebar);
     width: 240px;
     padding: 1rem;
-}
-
-#searchForm {
-    display: flex;
-    align-items: center;
-    border-radius: 0px;
-    border-bottom: 1px solid var(--text-placeholder);
-    height: 40px;
-    margin-top: 2rem;
-    padding: 0.5rem;
-}
-
-#searchForm input {
-    border: none;
-    background: transparent;
-    color: var(--text-secondary);
-    width: 100%;
-    height: fit-content;
-    font-size: 1rem;
-}
-
-#searchForm input:focus {
-    outline: none;
 }
 
 main.main .icon-container {
@@ -344,7 +315,7 @@ a.heading {
     main.main {
         margin-top: 56px;
         margin-left: 0;
-        padding: 1.5rem 1rem;
+        padding: 1rem;
     }
 
     main.main .icon-container {
@@ -425,3 +396,50 @@ body.registration {
     background: var(--background-main);
 }
 
+
+.modal-container {
+    display: none;
+    justify-content: center;
+    position: absolute;
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+    .modal-container .modal {
+        position: absolute;
+        padding: 1rem;
+        margin-top: 15%;
+        background: var(--background-main);
+        border-radius: 5px;
+        box-shadow: 0 3px 10px -3px #000;
+        width: 80%;
+        z-index: 3;
+    }
+
+    .modal-container #searchForm {
+        background: transparent;
+    }
+
+    #searchForm {
+        display: flex;
+        align-items: center;
+        border-radius: 0px;
+        border-bottom: 1px solid var(--text-placeholder);
+        height: 40px;
+        padding: 0.5rem;
+    }
+    
+    #searchForm input {
+        border: none;
+        background: transparent;
+        color: var(--text-secondary);
+        width: 100%;
+        height: fit-content;
+        font-size: 1rem;
+    }
+    
+    #searchForm input:focus {
+        outline: none;
+    }

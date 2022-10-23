@@ -50,55 +50,6 @@ if (formFavoriteButton) {
 // highlight js
 hljs.highlightAll();
 
-// // modify stylesheet
-// const light = `
-//   :root {
-//     --text-primary: #222;
-//     --text-secondary: #444;
-//     --text-tertiary: #888;
-//     --text-placeholder: #aaa;
-//     --icon-primary: invert(0%) sepia(4%) saturate(119%) hue-rotate(343deg) brightness(84%) contrast(73%);
-//     --icon-secondary: invert(27%) sepia(3%) saturate(0%) hue-rotate(223deg) brightness(113%) contrast(84%);
-//     --icon-tertiary: invert(63%) sepia(0%) saturate(0%) hue-rotate(212deg) brightness(85%) contrast(95%);
-//     --background-main: #fefefe;
-//     --background-sidebar: #f6f6f6;
-// }`
-
-// const dark = `
-//   :root {
-//     --background-main: #222;
-//     --background-sidebar: #444;
-//     --text-primary: #fefefe;
-//     --text-secondary: #bebebe;
-//     --text-tertiary: #999;
-//     --text-placeholder: #777;
-//     --icon-primary: invert(100%) sepia(0%) saturate(0%) hue-rotate(45deg) brightness(103%) contrast(103%);
-//     --icon-secondary: invert(100%) sepia(0%) saturate(6014%) hue-rotate(97deg) brightness(82%) contrast(76%);
-//     --icon-tertiary: invert(69%) sepia(0%) saturate(1%) hue-rotate(234deg) brightness(88%) contrast(91%);
-//   }`
-
-// const nord = `
-//   :root {
-//     --background-main: #002b36;
-//     --background-sidebar: #023643;
-//     --text-primary: #93a1a1;
-//     --text-secondary: #dfdfdf;
-//     --text-tertiary: #a4b5b6;;
-//     --text-placeholder: #32555e;
-//     --icon-primary: invert(91%) sepia(5%) saturate(574%) hue-rotate(134deg) brightness(78%) contrast(90%);
-//     --icon-secondary: invert(100%) sepia(0%) saturate(6825%) hue-rotate(55deg) brightness(121%) contrast(75%);
-//     --icon-tertiary: var(--icon-primary);
-//   }
-// `
-
-// const setTheme = theme => {
-//   sheet = document.styleSheets[0];
-//   sheet.deleteRule(0);
-//   sheet.insertRule(theme);
-// }
-
-// setTheme(nord)
-
 // remove list style type from li that has ul
 const liElements = document.querySelectorAll('li');
 for (li of liElements) {
@@ -154,3 +105,18 @@ if (menuButton) {
     // }
   });
 }
+
+// toggle modal container
+const modalContainer = document.querySelector('.modal-container');
+const searchButton = document.getElementById('searchButton');
+
+searchButton.addEventListener('click', () => {
+  modalContainer.style.display = 'flex';
+  searchInput.focus()
+});
+
+modalContainer.addEventListener('click', e => {
+  if (e.target.className == 'modal-container') {
+    modalContainer.style.display = 'none';
+  }
+});

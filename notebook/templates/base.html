@@ -22,6 +22,7 @@
                 <img class="icon" src="{% static 'icons/add.svg' %}" alt="Add Icon">
                 <span class="text">New entry</span>
             </a>
+            <img class="icon button" id="searchButton" src="{% static 'icons/search.svg' %}" alt="Search Icon">
         </div>
         <div class="content hide-mobile-content">
             <h5>favorites</h5>
@@ -40,12 +41,6 @@
                     </li>
                 {% endfor %}
             </ul>
-            <form id="searchForm"  action="{% url 'search-posts' %}" method="GET">
-                <input id="searchInput" name="q" type="text">
-                <button class="button" type="submit">
-                    <img class="icon" src="{% static 'icons/search.svg' %}" alt="Search Icon">
-                </button>
-            </form>
         </div>
         <a id="logoutButton" href="{% url 'logout' %}">Log Out</a>
     </nav>
@@ -53,6 +48,17 @@
         {% block content %}
         {% endblock content %}
     </main>
+
+    <div class="modal-container">
+        <div class="modal">
+            <form id="searchForm"  action="{% url 'search-posts' %}" method="GET">
+                <input id="searchInput" name="q" type="text" placeholder="Search">
+                <button class="button" type="submit">
+                    <img class="icon" src="{% static 'icons/search.svg' %}" alt="Search Icon">
+                </button>
+            </form>
+        </div>
+    </div>
 
     <script src="{% static 'js/main.js' %}"></script>
     {% endif %}
