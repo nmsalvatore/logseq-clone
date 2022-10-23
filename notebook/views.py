@@ -87,7 +87,7 @@ def search_posts(request):
     context = get_base_context(request)
     search_text = request.GET.get('q')
     search_results = Entry.objects.filter(
-        Q(title__icontains=search_text) | Q(body__icontains=search_text)
+       Q(user=request.user) & (Q(title__icontains=search_text) | Q(body__icontains=search_text))
     )
     context['search_text'] = search_text
     context['entries'] = search_results

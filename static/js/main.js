@@ -98,25 +98,5 @@ if (menuButton) {
     } else {
       navContent.classList.add('hide-mobile-content');
     }
-    // if (navContent.style.display == 'block') {
-    //   navContent.style.display = 'none';
-    // } else {
-    //   navContent.style.display = 'block';
-    // }
   });
 }
-
-// toggle modal container
-const modalContainer = document.querySelector('.modal-container');
-const searchButton = document.getElementById('searchButton');
-
-searchButton.addEventListener('click', () => {
-  modalContainer.style.display = 'flex';
-  searchInput.focus()
-});
-
-modalContainer.addEventListener('click', e => {
-  if (e.target.className == 'modal-container') {
-    modalContainer.style.display = 'none';
-  }
-});
