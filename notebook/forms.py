@@ -14,6 +14,7 @@ class EntryForm(ModelForm):
             }),
             'body': forms.Textarea(attrs={
                 'placeholder': "What's on your mind?",
-                'autocomplete': 'off'
+                'autocomplete': 'off',
+                'rows': 1
             }),
         }
